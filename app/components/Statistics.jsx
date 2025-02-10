@@ -1,13 +1,16 @@
 import ProgressBar from "./ProgressBar";
 
-export default function Statistics({ progress, streak }) {
+export default function Statistics({ progress }) {
+  const isComplete = progress === 100;
+
   return (
-    <div className="mb-8">
+    <div className="mb-8 relative">
       <ProgressBar progress={progress} />
-      <p className="text-center mt-2 text-stone-400">
-        Current Streak:{" "}
-        <span className="text-emerald-400 font-semibold">{streak} days</span>
-      </p>
+      {isComplete && (
+        <div className="absolute top-full left-0 right-0 text-center mt-2 text-emerald-400 font-bold animate-bounce">
+          Congratulations, you've completed the day!
+        </div>
+      )}
     </div>
   );
 }
