@@ -74,7 +74,7 @@ export default function HabitForm({ addHabit }) {
         <div className="flex flex-col justify-end">
           <label
             htmlFor="priority"
-            className="block text-sm font-medium text-stone-300 mb-2"
+            className="block text-sm font-medium text-stone-300"
           >
             Priority
           </label>

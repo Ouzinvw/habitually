@@ -18,7 +18,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 
-export default function HabitTable({ habits, toggleComplete, removeHabit }) {
+export default function HabitTable({
+  habits,
+  toggleComplete,
+  removeHabit,
+  allCompleted,
+}) {
   if (habits.length === 0) {
     return (
       <p className="text-center text-stone-400">
@@ -37,7 +42,7 @@ export default function HabitTable({ habits, toggleComplete, removeHabit }) {
               Goal
             </TableHead>
             <TableHead className="text-stone-300">Priority</TableHead>
-            <TableHead className="text-stone-300 w-[10px]"></TableHead>
+            <TableHead className="text-stone-300 w-[100px]">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -48,7 +53,10 @@ export default function HabitTable({ habits, toggleComplete, removeHabit }) {
                   <Checkbox
                     checked={habit.completed}
                     onCheckedChange={() => toggleComplete(habit.id)}
-                    className="border-stone-500 text-emerald-500"
+                    disabled={allCompleted}
+                    className={`border-stone-500 ${
+                      habit.completed ? "bg-emerald-500" : ""
+                    } ${allCompleted ? "opacity-50 cursor-not-allowed" : ""}`}
                   />
                   <TooltipProvider>
                     <Tooltip>

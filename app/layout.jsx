@@ -4,8 +4,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Habitual",
-  description: "A habit tracking app",
+  title: "Daily Habits",
+  description:
+    "A simple and free habit tracking app by Ouzin von Wahl - www.Ouzinvw.com",
 };
 
 export default function RootLayout({ children }) {
