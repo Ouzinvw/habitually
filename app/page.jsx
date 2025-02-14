@@ -137,9 +137,8 @@ export default function Home() {
     habits.length > 0 ? (completedHabits / habits.length) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-stone-900 text-stone-200 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-stone-900 text-stone-200 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4 text-stone-100">Progress</h2>
         <Statistics
           progress={progress}
           streak={streak}
