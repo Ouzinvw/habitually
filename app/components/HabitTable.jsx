@@ -37,12 +37,12 @@ export default function HabitTable({
       <Table className="w-full">
         <TableHeader>
           <TableRow className="bg-stone-800">
-            <TableHead className="text-stone-300">Name</TableHead>
+            <TableHead className="text-stone-300">Habit</TableHead>
+            <TableHead className="text-stone-300">Goal</TableHead>
             <TableHead className="text-stone-300 hidden sm:table-cell">
-              Goal
+              Priority
             </TableHead>
-            <TableHead className="text-stone-300">Priority</TableHead>
-            <TableHead className="text-stone-300 w-[100px]">Actions</TableHead>
+            <TableHead className="text-stone-300 w-[100px]"></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -72,12 +72,12 @@ export default function HabitTable({
                   </TooltipProvider>
                 </div>
               </TableCell>
-              <TableCell className="text-stone-300 hidden sm:table-cell">
+              <TableCell className="text-stone-300 =">
                 {habit.goal || "N/A"}
               </TableCell>
-              <TableCell>
+              <TableCell className="hidden sm:table-cell">
                 <span
-                  className={`px-2 py-1 rounded-full text-xs font-semibold
+                  className={`px-2 py-1 rounded-md text-xs font-semibold
                   ${
                     habit.priority === "Low"
                       ? "bg-emerald-900 text-emerald-200"

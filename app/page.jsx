@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import HabitForm from "./components/HabitForm";
 import HabitTable from "./components/HabitTable";
 import Statistics from "./components/Statistics";
+import Footer from "./components/Footer";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -137,40 +138,43 @@ export default function Home() {
     habits.length > 0 ? (completedHabits / habits.length) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-stone-900 text-stone-200 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
-        <Statistics
-          progress={progress}
-          streak={streak}
-          nextResetTime={nextResetTime}
-          allCompleted={allCompleted}
-        />
-        <div className="my-8">
-          <Button
-            onClick={() => setIsFormVisible(!isFormVisible)}
-            className="w-full bg-stone-800 hover:bg-stone-700 text-stone-200"
-          >
-            {isFormVisible ? (
-              <>
-                <ChevronUp className="mr-2 h-4 w-4" />
-                Hide Habit Form
-              </>
-            ) : (
-              <>
-                <ChevronDown className="mr-2 h-4 w-4" />
-                Add New Habit
-              </>
-            )}
-          </Button>
-          {isFormVisible && <HabitForm addHabit={addHabit} />}
+    <div className="bg-stone-900 text-stone-200 min-h-screen flex flex-col">
+      <div className="flex-grow py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <Statistics
+            progress={progress}
+            streak={streak}
+            nextResetTime={nextResetTime}
+            allCompleted={allCompleted}
+          />
+          <div className="my-8">
+            <Button
+              onClick={() => setIsFormVisible(!isFormVisible)}
+              className="w-full bg-stone-800 hover:bg-stone-700 text-stone-200"
+            >
+              {isFormVisible ? (
+                <>
+                  <ChevronUp className="mr-2 h-4 w-4" />
+                  Hide Habit Form
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="mr-2 h-4 w-4" />
+                  Add New Habit
+                </>
+              )}
+            </Button>
+            {isFormVisible && <HabitForm addHabit={addHabit} />}
+          </div>
+          <HabitTable
+            habits={habits}
+            toggleComplete={toggleComplete}
+            removeHabit={removeHabit}
+            allCompleted={allCompleted}
+          />
         </div>
-        <HabitTable
-          habits={habits}
-          toggleComplete={toggleComplete}
-          removeHabit={removeHabit}
-          allCompleted={allCompleted}
-        />
       </div>
+      <Footer />
     </div>
   );
 }
